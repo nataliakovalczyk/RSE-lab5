@@ -1,0 +1,31 @@
+default_stages: [pre-commit]
+
+repos:
+  - repo: 
+https://github.com/psf/black
+
+    rev: 26.3.1
+    hooks:
+      - id: black
+
+  - repo: 
+https://github.com/pylint-dev/pylint
+
+    rev: v4.0.5
+    hooks:
+      - id: pylint
+        args:
+          [
+            "-rn", # Only display messages
+            "-sn", # Don't display the score
+          ]   
+
+  - repo: 
+https://github.com/nbQA-dev/nbQA
+
+    rev: 1.9.1
+    hooks:
+     - id: nbqa-black
+       additional_dependencies: [black==26.3.1]
+     - id: nbqa-pylint
+       additional_dependencies: [pylint==4.0.5]
